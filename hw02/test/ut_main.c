@@ -18,7 +18,7 @@ int main(void)
     char fd[5];                                   // 開啟 character device 的 char
     int i;                                        // 宣告變數給後面要開啟 character device 的 for 迴圈使用
 
-    system("sudo rm -r /dev/mycdev_*");        // 將之前建立過的 character device 刪掉
+    system("sudo rm -rf /dev/mycdev_*");        // 將之前建立過的 character device 刪掉
     system("sudo mknod /dev/mycdev_1 c 45 0"); // 建立一個 device
     fd[0] = open("/dev/mycdev_1", O_RDWR);     // 開啟他
     system("sudo mknod /dev/mycdev_2 c 45 1"); // 建立第二個 device
