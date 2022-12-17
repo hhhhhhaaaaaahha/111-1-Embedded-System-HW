@@ -6,7 +6,7 @@
 #include <assert.h>
 #include <string.h>
 
-#define BUFFER_SIZE 100 // 定義 buffer 大小
+#define BUFFER_SIZE 100                           // 定義 buffer 大小
 
 int main(void)
 {
@@ -18,6 +18,7 @@ int main(void)
     char fd[5];                                   // 開啟 character device 的 char
     int i;                                        // 宣告變數給後面要開啟 character device 的 for 迴圈使用
 
+<<<<<<< HEAD
     system("sudo rm -rf /dev/mycdev_*");        // 將之前建立過的 character device 刪掉
     system("sudo mknod /dev/mycdev_1 c 45 0"); // 建立一個 device
     fd[0] = open("/dev/mycdev_1", O_RDWR);     // 開啟他
@@ -29,6 +30,19 @@ int main(void)
     fd[3] = open("/dev/mycdev_4", O_RDWR);     // 開啟他
     system("sudo mknod /dev/mycdev_5 c 45 4"); // 建立第五個 device
     fd[4] = open("/dev/mycdev_5", O_RDWR);     // 開啟他
+=======
+    system("sudo rm -r /dev/mycdev_*");           // 將之前建立過的 character device 刪掉
+    system("sudo mknod /dev/mycdev_1 c 45 0");    // 建立一個 device
+    fd[0] = open("/dev/mycdev_1", O_RDWR);        // 開啟他
+    system("sudo mknod /dev/mycdev_2 c 45 1");    // 建立第二個 device
+    fd[1] = open("/dev/mycdev_2", O_RDWR);        // 開啟他
+    system("sudo mknod /dev/mycdev_3 c 45 2");    // 建立第三個 device
+    fd[2] = open("/dev/mycdev_3", O_RDWR);        // 開啟他
+    system("sudo mknod /dev/mycdev_4 c 45 3");    // 建立第四個 device
+    fd[3] = open("/dev/mycdev_4", O_RDWR);        // 開啟他
+    system("sudo mknod /dev/mycdev_5 c 45 4");    // 建立第五個 device
+    fd[4] = open("/dev/mycdev_5", O_RDWR);        // 開啟他
+>>>>>>> d5ea037cbda9c27414a158b78d88a86e1f55bb06
 
     // 檢查是否開啟成功
     for (i = 0; i < 5; i++)
@@ -40,12 +54,12 @@ int main(void)
         }
     }
 
-    write(fd[0], test, strlen(test) + 1);      // 將測資 1 寫進 device1
-    write(fd[1], test2, strlen(test2) + 1);    // 將測資 2 寫進 device2
-    read(fd[0], response, strlen(test) + 1);   // 將從 device1 讀取出來的值放入 response 中
-    read(fd[1], response2, strlen(test2) + 1); // 將從 device2 讀取出來的值放入 response2 中
-    printf("%s\n", response);                  // 印出 response 的值
-    printf("%s\n", response2);                 // 印出 response2 的值
+    write(fd[0], test, strlen(test) + 1);         // 將測資 1 寫進 device1
+    write(fd[1], test2, strlen(test2) + 1);       // 將測資 2 寫進 device2
+    read(fd[0], response, strlen(test) + 1);      // 將從 device1 讀取出來的值放入 response 中
+    read(fd[1], response2, strlen(test2) + 1);    // 將從 device2 讀取出來的值放入 response2 中
+    printf("%s\n", response);                     // 印出 response 的值
+    printf("%s\n", response2);                    // 印出 response2 的值
 
     // 關閉所有 device
     for (i = 0; i < 5; i++)
