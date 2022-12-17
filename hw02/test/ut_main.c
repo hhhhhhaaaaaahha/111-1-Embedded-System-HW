@@ -6,7 +6,7 @@
 #include <assert.h>
 #include <string.h>
 
-#define BUFFER_SIZE 100 // 定義 buffer 大小
+#define BUFFER_SIZE 100                           // 定義 buffer 大小
 
 int main(void)
 {
